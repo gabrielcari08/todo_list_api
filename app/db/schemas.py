@@ -30,3 +30,13 @@ class TaskResponse(BaseModel):
     
     class Config:
         orm_mode = True
+        
+#Define el esquema que vamos a usar cuando un usuario intente iniciar sesion.
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+    
+#Este esquema define cómo será la respuesta con el token
+class Token(BaseModel):
+    access_token: str
+    token_type: str

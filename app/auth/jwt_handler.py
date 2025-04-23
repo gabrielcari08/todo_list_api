@@ -31,7 +31,7 @@ def create_access_token(data: dict):
 def verify_access_token(token: str, credentials_exception):
     try:
         #Decodificamos el token:
-        payload = jwt.decode(token, SECRET_KEY, algorithm=[ALGORITHM])
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         #Obtenemos el user_id que guardamos dentro del token que creamos en la funcion anterior
         user_id: int = payload.get("user_id")
         #Si el token no tiene el user_id:
@@ -42,4 +42,4 @@ def verify_access_token(token: str, credentials_exception):
         return user_id   
     #Manejo de errores:      
     except JWTError:
-        return credentials_exception
+        raise credentials_exception
